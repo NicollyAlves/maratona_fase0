@@ -5,290 +5,238 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IV Maratona de Programação do Norte | UFAM</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        /* Estilos específicos para a tela de acesso */
+        .access-screen {
+            position: relative;
+            height: 100vh;
+            background: linear-gradient(135deg, #0a0a20 0%, #1a1a40 100%);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        .access-content {
+            text-align: center;
+            z-index: 10;
+            padding: 2rem;
+            max-width: 800px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .logo {
+            margin-bottom: 2rem;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .logo img {
+            width: 150px;
+            height: auto;
+            filter: drop-shadow(0 0 15px rgba(0, 240, 255, 0.6));
+        }
+
+        .logo-text {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-top: 1rem;
+            background: linear-gradient(90deg, #00f0ff, #ff00f0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 2px;
+        }
+
+        .access-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .btn-neon {
+            padding: 18px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .btn-neon-primary {
+            background: rgba(0, 240, 255, 0.1);
+            color: #00f0ff;
+            border: 2px solid #00f0ff;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+        }
+
+        .btn-neon-primary:hover {
+            background: rgba(0, 240, 255, 0.3);
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.6);
+            transform: translateY(-3px);
+        }
+
+        .btn-neon-secondary {
+            background: rgba(255, 0, 240, 0.1);
+            color: #ff00f0;
+            border: 2px solid #ff00f0;
+            box-shadow: 0 0 15px rgba(255, 0, 240, 0.4);
+        }
+
+        .btn-neon-secondary:hover {
+            background: rgba(255, 0, 240, 0.3);
+            box-shadow: 0 0 30px rgba(255, 0, 240, 0.6);
+            transform: translateY(-3px);
+        }
+
+        /* Efeitos de fundo */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            background-color: rgba(0, 240, 255, 0.5);
+            border-radius: 50%;
+            animation: float linear infinite;
+        }
+
+        .hologrid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(rgba(0, 240, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 240, 255, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.3;
+        }
+
+        /* Animações */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes floatParticle {
+            from { transform: translateY(100vh) translateX(0); }
+            to { transform: translateY(-100vh) translateX(100px); }
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .logo img {
+                width: 120px;
+            }
+            
+            .logo-text {
+                font-size: 1.5rem;
+            }
+            
+            .btn-neon {
+                padding: 15px 20px;
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Efeitos de Fundo -->
-    <div class="holographic-bg"></div>
-    <div class="hologrid"></div>
-    <div class="particles" id="particles-js"></div>
-    <div class="code-lines" id="code-lines"></div>
-
-    <!-- Menu de Navegação -->
-    <div class="navbar-container" id="navbar">
-        <div class="container">
-            <div class="navbar">
-                <div class="logo">
-                    <img src="logo.png" alt="Logo IV Maratona">
-                    <div class="logo-text">IV MPN</div>
-                </div>
-                
-                <div id="hamburguer">
-                    <div class="line1"></div>
-                    <div class="line2"></div>
-                    <div class="line3"></div>
-                </div>
-                
-                <nav class="nav-menu">
-                    <ul>
-                        <li><a href="#sobre">Sobre</a></li>
-                        <li><a href="#datas">Datas</a></li>
-                        <li><a href="#inscricoes">Inscrições</a></li>
-                        <li><a href="#competicoes">Competições</a></li>
-                        <li><a href="#contato">Contato</a></li>
-                        <li><a href="#divulgacao">Divulgação</a></li>
-                        <li><a href="#certificados">Certificados</a></li>
-                    </ul>
-                </nav>
+    <!-- Tela de Acesso Inicial -->
+    <div id="access-screen" class="access-screen">
+        <!-- Efeitos de fundo -->
+        <div class="hologrid"></div>
+        <div class="particles" id="particles-js"></div>
+        
+        <div class="access-content">
+            <div class="logo">
+                <img src="logo.png" alt="Logo IV Maratona">
+                <div class="logo-text">MARATONA</div>
+            </div>
+            
+            <div class="event-info">
+                <h1>2025</h1>
+                <p>Universidade Federal do Amazonas</p>
+            </div>
+            
+            <div class="access-buttons">
+                <a href="maratona.html" class="btn-neon btn-neon-primary">
+                    <i class="fas fa-trophy"></i> MARATONA DO NORTE
+                </a>
+                <a href="fase0.html" class="btn-neon btn-neon-secondary">
+                    <i class="fas fa-laptop-code"></i> FASE 0 ONLINE
+                </a>
             </div>
         </div>
     </div>
-          
-    <!-- Seção Hero/Banner -->
-    <header class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>IV MARATONA DE PROGRAMAÇÃO DO NORTE</h1>
-                <div class="date">26 DE JUNHO DE 2021</div>
-                <p>Desafie os limites da computação na competição que reúne os melhores talentos da região Norte em um evento de alto nível técnico e inovação.</p>
-                
-                <div class="hero-buttons">
-                    <a href="#inscricoes" class="btn-neon btn-neon-primary">INSCREVA-SE</a>
-                    <a href="#sobre" class="btn-neon btn-neon-secondary">SAIBA MAIS</a>
-                </div>
-            </div>
-        </div>
-    </header>
 
-    <!-- Seções do Conteúdo -->
-    <section id="sobre" class="section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Sobre o Evento</h2>
-                <p>A IV Maratona de Programação do Norte representa o ápice da excelência em competições de programação na região</p>
-            </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Criar partículas dinâmicas
+            const particlesContainer = document.getElementById('particles-js');
+            const particleCount = 30;
             
-            <div class="holographic-card">
-                <p>A IV Maratona de Programação do Norte será um marco na computação regional. No dia 26 de junho de 2021, reuniremos mentes brilhantes de cursos de graduação e pós-graduação em Computação e áreas afins de toda a Região Norte para um desafio épico de lógica, algoritmos e criatividade.</p>
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
                 
-                <p>Este evento, organizado pelo Grupo de Competição Competitiva da UFAM, tem como objetivo promover o desenvolvimento de habilidades em programação competitiva, fomentar a troca de conhecimentos entre instituições e identificar os talentos mais promissores da região.</p>
+                // Tamanho aleatório
+                const size = Math.random() * 5 + 1;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
                 
-                <p>A competição segue os moldes das principais maratonas internacionais, com problemas desafiadores que testam não apenas a habilidade de codificação, mas também o raciocínio lógico, a capacidade de trabalhar em equipe e a eficiência na resolução de problemas complexos.</p>
-            </div>
+                // Posição inicial aleatória
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                
+                // Animação com duração e delay aleatórios
+                const duration = Math.random() * 30 + 20;
+                const delay = Math.random() * 10;
+                particle.style.animation = `floatParticle ${duration}s linear ${delay}s infinite`;
+                
+                // Opacidade aleatória
+                particle.style.opacity = Math.random() * 0.5 + 0.1;
+                
+                particlesContainer.appendChild(particle);
+            }
             
-            <hr class="section-divider">
-        </div>
-    </section>
-
-    <section id="datas" class="section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Datas Importantes</h2>
-                <p>Marque em seu calendário os momentos cruciais deste evento</p>
-            </div>
-            
-            <div class="card-grid">
-                <div class="holographic-card">
-                    <h3>Inscrições Prorrogadas!</h3>
-                    <p>De 7 à 25 de junho (até às 11:00)</p>
-                    <p>Não perca esta oportunidade de participar do maior evento de programação competitiva da região Norte!</p>
-                </div>
+            // Efeito de digitação no título (opcional)
+            const logoText = document.querySelector('.logo-text');
+            if (logoText) {
+                const text = logoText.textContent;
+                logoText.textContent = '';
                 
-                <div class="holographic-card">
-                    <h3>Data da Competição</h3>
-                    <p>Dia 26 de junho - Prepare-se para o desafio!</p>
-                    <p>Um dia intenso de competição, aprendizado e superação de limites na programação.</p>
-                </div>
-            </div>
-            
-            <hr class="section-divider">
-        </div>
-    </section>
-
-    <section id="inscricoes" class="section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Inscrições</h2>
-                <p>Faça parte desta competição de elite</p>
-            </div>
-            
-            <div class="holographic-card">
-                <h3>Processo de Inscrição</h3>
-                <p>A competição será realizada na plataforma NEPS Academy, um ambiente moderno e desafiador para testar suas habilidades.</p>
-                
-                <p>Taxa de inscrição: apenas R$ 30,00 por equipe - um investimento mínimo para uma experiência máxima!</p>
-                
-                <ul class="styled-list">
-                    <li>Forme equipes de 3 participantes</li>
-                    <li>Escolha um representante para realizar a inscrição</li>
-                    <li>Pague a taxa através do sistema seguro</li>
-                    <li>Receba confirmação por e-mail</li>
-                </ul>
-                
-                <a href="https://neps.academy" class="btn-neon btn-neon-primary" style="margin-top: 20px;">ACESSAR PLATAFORMA DE INSCRIÇÃO</a>
-            </div>
-            
-            <hr class="section-divider">
-        </div>
-    </section>
-
-    <section id="competicoes" class="section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Outras Competições Relacionadas</h2>
-                <p>Explore o ecossistema de programação competitiva</p>
-            </div>
-            
-            <div class="card-grid">
-                <div class="holographic-card">
-                    <h3>Olimpíada Brasileira de Informática</h3>
-                    <p>Datas das Competições:</p>
-                    <ul class="styled-list">
-                        <li>Modalidade Programação - de 14/06 a 16/06</li>
-                        <li>Modalidade Iniciação - de 21/06 a 23/06</li>
-                    </ul>
-                    <p>Para mais informações: <a href="http://olimpiada.icomp.ufam.edu.br">olimpiada.icomp.ufam.edu.br</a></p>
-                </div>
-                
-                <div class="holographic-card">
-                    <h3>Maratona de Programação da SBC/ICPC</h3>
-                    <p>Primeira Fase Online: 14 de novembro de 2020</p>
-                    <p>Final Brasileira: Online, 9 e 10 de julho de 2021</p>
-                    <p>Site oficial: <a href="http://maratona.sbc.org.br/index.html">maratona.sbc.org.br</a></p>
-                    
-                    <h3 style="margin-top: 30px;">Competições Internacionais</h3>
-                    <ul class="styled-list">
-                        <li>Google Code Jam</li>
-                        <li>Facebook Hacker Cup</li>
-                        <li>International Olympiad in Informatics (IOI)</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <hr class="section-divider">
-        </div>
-    </section>
-
-    <section id="contato" class="section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Contato</h2>
-                <p>Entre em contato com nossa equipe organizadora</p>
-            </div>
-            
-            <div class="card-grid">
-                <div class="holographic-card">
-                    <h3>Coordenação Geral</h3>
-                    <p>Grupo de Competição Competitiva da UFAM está à disposição para esclarecer dúvidas:</p>
-                    <p><a href="mailto:maratona@icomp.ufam.edu.br">maratona@icomp.ufam.edu.br</a></p>
-                    
-                    <h3 style="margin-top: 30px;">Redes Sociais</h3>
-                    <p>Siga-nos para ficar por dentro de todas as atualizações:</p>
-                    <p>@maratonanorte (Instagram e Twitter)</p>
-                </div>
-                
-                <div class="holographic-card">
-                    <h3>Localização</h3>
-                    <p>Instituto de Computação - Universidade Federal do Amazonas</p>
-                    <p>Av. General Rodrigo Otávio, 6200 - Coroado I, Manaus - AM</p>
-                    
-                    <h3 style="margin-top: 30px;">Patrocínios e Parcerias</h3>
-                    <p>Interessado em apoiar nosso evento? Entre em contato:</p>
-                    <p><a href="mailto:parcerias@icomp.ufam.edu.br">parcerias@icomp.ufam.edu.br</a></p>
-                </div>
-            </div>
-            
-            <hr class="section-divider">
-        </div>
-    </section>
-
-    <section id="divulgacao" class="section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Material de Divulgação</h2>
-                <p>Acesse nossos materiais oficiais e ajude a divulgar o evento</p>
-            </div>
-            
-            <div class="holographic-card">
-                <h3>Kit de Divulgação</h3>
-                <p>Baixe nossos materiais oficiais e ajude a espalhar a palavra sobre este evento incrível:</p>
-                
-                <div class="card-grid" style="margin-top: 30px;">
-                    <div class="holographic-card">
-                        <h4>Cartaz Digital</h4>
-                        <p>Versões em alta resolução para impressão e redes sociais</p>
-                        <a href="#" class="btn-neon btn-neon-secondary" style="margin-top: 15px;">DOWNLOAD</a>
-                    </div>
-                    
-                    <div class="holographic-card">
-                        <h4>Logotipos</h4>
-                        <p>Versões vetoriais e em diferentes formatos</p>
-                        <a href="#" class="btn-neon btn-neon-secondary" style="margin-top: 15px;">DOWNLOAD</a>
-                    </div>
-                    
-                    <div class="holographic-card">
-                        <h4>Template de E-mail</h4>
-                        <p>Modelo para divulgação institucional</p>
-                        <a href="#" class="btn-neon btn-neon-secondary" style="margin-top: 15px;">DOWNLOAD</a>
-                    </div>
-                </div>
-            </div>
-            
-            <hr class="section-divider">
-        </div>
-    </section>
-
-    <section id="certificados" class="section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Certificados</h2>
-                <p>Reconhecimento oficial para todos os participantes</p>
-            </div>
-            
-            <div class="holographic-card">
-                <h3>Certificação Digital</h3>
-                <p>Todos os participantes receberão certificados digitais com tecnologia blockchain para verificação de autenticidade. As instruções para download serão disponibilizadas após o evento.</p>
-                
-                <h3 style="margin-top: 30px;">Premiação</h3>
-                <p>As equipes com melhor desempenho receberão:</p>
-                <ul class="styled-list">
-                    <li>Certificados de excelência</li>
-                    <li>Medalhas virtuais personalizadas</li>
-                    <li>Oportunidades de estágio com nossos parceiros</li>
-                    <li>Vagas para outras competições nacionais</li>
-                </ul>
-                
-                <h3 style="margin-top: 30px;">Regras e Critérios</h3>
-                <p>Consulte nosso regulamento completo para entender todos os detalhes da competição e premiação.</p>
-                <a href="#" class="btn-neon btn-neon-secondary" style="margin-top: 15px;">ACESSAR REGULAMENTO</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Rodapé -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <img src="logo.png" alt="Logo IV Maratona">
-                    <div class="footer-logo-text">IV MARATONA DE PROGRAMAÇÃO DO NORTE</div>
-                </div>
-                
-                <p>O maior evento de programação competitiva da região Norte do Brasil</p>
-                
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                </div>
-                
-                <p class="copyright">COPYRIGHT © 2021 IV MARATONA DE PROGRAMAÇÃO DO NORTE | TODOS OS DIREITOS RESERVADOS</p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="js/script.js"></script>
+                let i = 0;
+                const typingEffect = setInterval(() => {
+                    if (i < text.length) {
+                        logoText.textContent += text.charAt(i);
+                        i++;
+                    } else {
+                        clearInterval(typingEffect);
+                    }
+                }, 100);
+            }
+        });
+    </script>
 </body>
 </html>
