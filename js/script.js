@@ -155,3 +155,124 @@ document.addEventListener('DOMContentLoaded', () => {
     createCodeLines();
     typeWriterEffect();
 });
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Obter referências aos botões e elementos
+    const btnMaratona = document.getElementById('btn-maratona');
+    const btnFase0 = document.getElementById('btn-fase0');
+    const accessScreen = document.getElementById('access-screen');
+    const mainContent = document.getElementById('main-content');
+    
+    // Adicionar eventos de clique aos botões
+    btnMaratona.addEventListener('click', function() {
+        // Esconder tela de acesso e mostrar conteúdo principal
+        accessScreen.style.display = 'none';
+        mainContent.style.display = 'block';
+        
+        // Rolar suavemente para o topo
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+    
+    btnFase0.addEventListener('click', function() {
+        // Esconder tela de acesso e mostrar conteúdo principal
+        accessScreen.style.display = 'none';
+        mainContent.style.display = 'block';
+        
+        // Rolar suavemente para a seção de competições (onde presumo que a Fase 0 está)
+        document.getElementById('competicoes').scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+    
+    // Você pode adicionar mais funcionalidades aqui conforme necessário
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Menu Hamburguer
+    const hamburguer = document.getElementById('hamburguer');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    if (hamburguer && navMenu) {
+        hamburguer.addEventListener('click', function() {
+            this.classList.toggle('toggle');
+            navMenu.classList.toggle('active');
+        });
+    }
+
+    // Fechar menu ao clicar em um link
+    const navLinks = document.querySelectorAll('.nav-menu a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            if (hamburguer && navMenu) {
+                hamburguer.classList.remove('toggle');
+                navMenu.classList.remove('active');
+            }
+        });
+    });
+
+    // Efeito de rolagem suave para links internos
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // Efeito de partículas (simplificado)
+    const particles = document.getElementById('particles-js');
+    if (particles) {
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = `${Math.random() * 100}%`;
+            particle.style.top = `${Math.random() * 100}%`;
+            particle.style.width = `${Math.random() * 3 + 1}px`;
+            particle.style.height = particle.style.width;
+            particle.style.animationDuration = `${Math.random() * 20 + 10}s`;
+            particle.style.animationDelay = `${Math.random() * 5}s`;
+            particles.appendChild(particle);
+        }
+    }
+
+    // Linhas de código flutuantes
+    const codeLines = document.getElementById('code-lines');
+    if (codeLines) {
+        const codeSnippets = [
+            'function solve() { ... }',
+            'const matrix = new Array(n);',
+            'for (let i = 0; i < n; i++) {',
+            'return dp[n][m];',
+            'class Node { constructor() { ... } }',
+            'algorithm.sort(arr);',
+            'while (queue.length > 0) {',
+            'String result = "";',
+            'int left = 0, right = n-1;',
+            'vector<int> dp(n, 0);'
+        ];
+
+        for (let i = 0; i < 15; i++) {
+            const line = document.createElement('div');
+            line.className = 'code-line';
+            line.textContent = codeSnippets[Math.floor(Math.random() * codeSnippets.length)];
+            line.style.left = `${Math.random() * 100}%`;
+            line.style.top = `${Math.random() * 100}%`;
+            line.style.animationDuration = `${Math.random() * 30 + 20}s`;
+            line.style.animationDelay = `${Math.random() * 10}s`;
+            codeLines.appendChild(line);
+        }
+    }
+});
+
