@@ -1,0 +1,24 @@
+# ~/maratona-site/docker-compose.yml
+version: '3.8'
+
+services:
+  web:
+    image: nginx:alpine
+    container_name: maratona-web
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./html:/usr/share/nginx/html
+      - ./conf:/etc/nginx/conf.d
+      - ./certbot/www:/var/www/certbot
+      - ./certbot/conf:/etc/letsencrypt
+
+  certbot:
+    image: certbot/certbot
+    container_name: certbot
+    volumes:
+      - ./certbot/www:/var/www/certbot
+      - ./certbot/conf:/etc/letsencrypt
+    command: certonly --webroot --webroot-path=/var/www/certbot --email nicolly.alvesilva@gmail.com --agree-tos --no-eff-email -d maratona.icomp.ufam.edu.br --force-renewal
