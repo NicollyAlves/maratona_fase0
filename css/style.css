@@ -909,25 +909,6 @@ body {
     letter-spacing: 3px;
 }
 
-.logo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 2rem;
-}
-
-.logo img {
-    width: 120px;
-    height: auto;
-    margin-bottom: 1rem;
-}
-
-.logo-text {
-    font-size: 1.5rem;
-    font-weight: bold;
-    letter-spacing: 2px;
-    color: var(--primary-color);
-}
 
 .access-buttons {
     display: flex;
@@ -1430,5 +1411,3 @@ footer p {
         transform: translateY(-100vh) translateX(20px);
     }
 }
-
-
