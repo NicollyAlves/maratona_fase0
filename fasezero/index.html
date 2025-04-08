@@ -6,6 +6,112 @@
     <title>Fase 0 Online | IV MPN</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="/css/style.css">
+    <style>
+        /* Estilos adicionais para melhorar o layout */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 0;
+        }
+        
+        .navbar img {
+            max-height: 80px;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.5));
+            transition: all 0.3s ease;
+        }
+        
+        .navbar img:hover {
+            filter: drop-shadow(0 0 15px rgba(0, 240, 255, 0.8));
+        }
+        
+        .hero {
+            position: relative;
+            padding: 120px 0;
+            text-align: center;
+        }
+        
+        .edition-badge {
+            margin: 0 auto 30px;
+            width: 50%;
+            height: 50%;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(0, 240, 255, 0.5);
+            transform: perspective(1000px) rotateX(10deg);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .edition-badge img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .edition-badge::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, 
+                      rgba(0, 240, 255, 0.2) 0%, 
+                      rgba(255, 0, 240, 0.2) 100%);
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .edition-badge::after {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(45deg, 
+                      #00f0ff, 
+                      #ff00f0);
+            z-index: -1;
+            filter: blur(10px);
+            opacity: 0.6;
+            border-radius: 22px;
+            animation: glowPulse 4s infinite alternate;
+        }
+        
+        .edition-badge:hover {
+            transform: perspective(1000px) rotateX(0deg) scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 240, 255, 0.4);
+        }
+        
+        @keyframes glowPulse {
+            0% { opacity: 0.4; }
+            100% { opacity: 0.8; }
+        }
+        
+        /* Ajustes para mobile */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 10px 0;
+            }
+            
+            .navbar img {
+                max-height: 60px;
+                margin: 10px 0;
+            }
+            
+            .edition-badge {
+                margin-top: 10px;
+                width: 50%;
+                height: 50%;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Efeitos de Fundo -->
@@ -18,10 +124,6 @@
     <div class="navbar-container" id="navbar">
         <div class="container">
             <div class="navbar">
-                <div class="logo">
-                    <img src="/assets/images/logo_fasezero.jpeg" alt="Logo IV Maratona" width="300" height="300">
-                </div>
-                
                 <div id="hamburguer">
                     <div class="line1"></div>
                     <div class="line2"></div>
@@ -36,17 +138,23 @@
                         <li><a href="/fasezero/index.html#premiacao">Premiação</a></li>
                     </ul>
                 </nav>
+                
+                <img src="/assets/images/banner site 728 x 128 pixeus.png" alt="Logo IV Maratona">
             </div>
         </div>
     </div>
-          
+    
     <!-- Seção Hero/Banner -->
     <header class="hero">
         <div class="container">
             <div class="hero-content">
+                <!-- Imagem da edição -->
+                <div class="edition-badge">
+                    <img src="/assets/images/WhatsApp Image 2025-04-06 at 17.43.54.jpeg" alt="4ª Edição Fase Zero">
+                </div>
+                
                 <h1>4A EDIÇÃO DA FASE ZERO</h1>
-                <div class="date">15 DE MAIO DE 2025</div>
-                <p>Etapa classificatória para a IV Maratona de Programação do Norte. Prove suas habilidades e garanta sua vaga na competição principal!</p>
+                <div class="date">25 DE MAIO DE 2025</div>
                 
                 <div class="hero-buttons">
                     <a href="/fasezero/index.html#inscricao" class="btn-neon btn-neon-primary">INSCREVA-SE</a>
@@ -56,7 +164,7 @@
         </div>
     </header>
 
-    <!-- Seções do Conteúdo -->
+    <!-- Restante do código permanece igual -->
     <section id="sobre" class="section">
         <div class="container">
             <div class="section-title">
@@ -127,9 +235,9 @@
                 
                 <h3 style="margin-top: 30px;">Datas Importantes</h3>
                 <ul class="styled-list">
-                    <li>Inscrições: 01/05 a 14/05/2025</li>
-                    <li>Competição: 15/05/2025 (sábado)</li>
-                    <li>Resultados: 20/05/2025</li>
+                    <li>Inscrições: até 13/05/2025</li>
+                    <li>Competição: 25/05/2025</li>
+                    <li>Resultados: **/05/2025</li>
                 </ul>
                 
                 <a href="https://neps.academy" class="btn-neon btn-neon-primary" style="margin-top: 20px;">INSCREVA SUA EQUIPE</a>
@@ -199,6 +307,5 @@
 
     <script src="js/server.js"></script>
     <script src="/js/script.js"></script>
-
 </body>
 </html>
