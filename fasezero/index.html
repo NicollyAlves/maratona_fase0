@@ -13,18 +13,14 @@
             align-items: center;
             justify-content: space-between;
             padding: 15px 0;
+            background-color: var(--light-color);
         }
         
         .navbar img {
             max-height: 80px;
             width: auto;
             object-fit: contain;
-            filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.5));
             transition: all 0.3s ease;
-        }
-        
-        .navbar img:hover {
-            filter: drop-shadow(0 0 15px rgba(0, 240, 255, 0.8));
         }
         
         .hero {
@@ -40,10 +36,6 @@
             border-radius: 20px;
             overflow: hidden;
             position: relative;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            border: 2px solid rgba(0, 240, 255, 0.5);
-            transform: perspective(1000px) rotateX(10deg);
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         
         .edition-badge img {
@@ -59,9 +51,6 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, 
-                      rgba(0, 240, 255, 0.2) 0%, 
-                      rgba(255, 0, 240, 0.2) 100%);
             z-index: 1;
             pointer-events: none;
         }
@@ -85,7 +74,6 @@
         
         .edition-badge:hover {
             transform: perspective(1000px) rotateX(0deg) scale(1.05);
-            box-shadow: 0 15px 40px rgba(0, 240, 255, 0.4);
         }
         
         @keyframes glowPulse {
@@ -114,13 +102,6 @@
     </style>
 </head>
 <body>
-    <!-- Efeitos de Fundo -->
-    <div class="holographic-bg"></div>
-    <div class="hologrid"></div>
-    <div class="particles" id="particles-js"></div>
-    <div class="code-lines" id="code-lines"></div>
-
-    <!-- Menu de Navegação -->
     <div class="navbar-container" id="navbar">
         <div class="container">
             <div class="navbar">
@@ -283,7 +264,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="logo.png" alt="Logo IV Maratona">
+                    <img src="/assets/images/" alt="Logo IV Maratona">
                     <div class="footer-logo-text">FASE 0 ONLINE</div>
                 </div>
                 
