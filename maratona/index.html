@@ -8,19 +8,13 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <!-- Efeitos de Fundo -->
-    <div class="holographic-bg"></div>
-    <div class="hologrid"></div>
-    <div class="particles" id="particles-js"></div>
-    <div class="code-lines" id="code-lines"></div>
-
     <!-- Menu de Navegação -->
     <div class="navbar-container" id="navbar">
         <div class="container">
             <div class="navbar">
                 <div class="logo">
                     <!-- <img src="logo.png" alt="Logo IV Maratona"> --> 
-                    <div class="logo-text">IV MPN</div>
+                    <div class="logo-text"></div>
                 </div>
                 
                 <div id="hamburguer">
@@ -31,21 +25,26 @@
                 
                 <nav class="nav-menu">
                     <ul>
-                        <li><a href="/maratona/index.html#sobre">Sobre</a></li>
-                        <li><a href="/maratona/index.html#datas">Datas</a></li>
-                        <li><a href="/maratona/index.html#inscricoes">Inscrições</a></li>
-                        <li><a href="/maratona/index.html#competicoes">Competições</a></li>
-                        <li><a href="/maratona/index.html#contato">Contato</a></li>
+                        <li><a href="/maratona/index.html#sobre">SOBRE</a></li>
+                        <li><a href="/maratona/index.html#datas">DATAS</a></li>
+                        <li><a href="/maratona/index.html#inscricoes">INSCRIÇÕES</a></li>
+                        <li><a href="/maratona/index.html#competicoes">COMPETIÇÕES</a></li>
+                        <li><a href="/maratona/index.html#contato">CONTATO</a></li>
                     </ul>
                 </nav>
             </div>
         </div>
     </div>
+
           
     <!-- Seção Hero/Banner -->
     <header class="hero">
         <div class="container">
             <div class="hero-content">
+                <div class="edition-badge">
+                    <img src="/assets/images/OITADA MARATONA DO NORTE.png" alt="4ª Edição Fase Zero">
+                </div>
+                
                 <h1>8a Maratona de Programação do Norte</h1>
                 <div class="date">26 DE JUNHO DE 2025</div>
                 <p>Desafie os limites da computação na competição que reúne os melhores talentos da região Norte em um evento de alto nível técnico e inovação.</p>
@@ -123,7 +122,7 @@
                     <li>Receba confirmação por e-mail</li>
                 </ul>
                 
-                <a href="https://neps.academy" class="btn-neon btn-neon-primary" style="margin-top: 20px;">ACESSAR PLATAFORMA DE INSCRIÇÃO</a>
+                <a href="https://neps.academy" class="btn-neon btn-neon-primary">INSCRIÇÃO</a>
             </div>
             
             <hr class="section-divider">
@@ -192,8 +191,26 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="logo.png" alt="Logo IV Maratona">
-                    <div class="footer-logo-text">IV MARATONA DE PROGRAMAÇÃO DO NORTE</div>
+                    <div class="logo-fase-zero-footer">
+                        <img src="/assets/images/logo_fasezero.jpeg" alt="">
+                    </div>
+                    <div class="fase-zero-footer">
+                        <div class="fase-zero-logo-footer">
+                            <img class="img-maratona-norte" src="/assets/images/OITADA MARATONA DO NORTE.png" alt="Logo IV Maratona">
+                        </div>
+                        <div class="linha-vertical"></div>
+                        <div class="fase-zero-footer-comp">
+                            <img src="/assets/images/marca UFPA.png" alt="" srcset="">
+                            <img src="/assets/images/ufam.png" alt="" srcset="">
+                            <img class="logo-sbc" src="/assets/images/SBS.png" alt="" srcset="">
+                            <img src="/assets/images/GOOGLE.png" alt="" srcset="">
+                            <img src="/assets/images/FUNDAÇÃO ESTUDAR.png" alt="" srcset="">
+                        </div>
+                        <div class="linha-vertical"></div>
+                        <div>
+                            <img class="img-maratona-sul" src="/assets/images/QUARTA MARATONA DO NORTE.png" alt="Logo IV Maratona">
+                        </div>
+                    </div>
                 </div>
                 
                 <p>O maior evento de programação competitiva da região Norte do Brasil</p>
@@ -210,12 +227,11 @@
         </div>
     </footer>
 
-    <!-- Botão Voltar -->
-    <a href="/" class="btn-neon back-button">
+    <a href="/index.html" class="btn-neon back-button">
         <i class="fas fa-arrow-left"></i> VOLTAR
     </a>
 
-    <script src="js/script.js"></script>
+    <script src="/js/script.js"></script>
     <script src="/js/server.js"></script>
 
 </body>

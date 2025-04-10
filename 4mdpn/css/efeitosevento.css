@@ -1,0 +1,108 @@
+/*.typewriter {*/
+    /*font-family: 'Special Elite', cursive;*/
+    /*font-size: 2em;*/
+/*}*/
+@font-face {
+    font-family: Dosis;
+    src: url(../fonts/dosis/Dosis-Regular.otf)
+}
+.typewriter {
+    font-family: 'Dosis', cursive;
+    font-size: 20pt;
+	color: #000;
+}
+
+.typewriter::after {
+    content: '|';
+    transition: ease-in-out 0.3s;
+    opacity: 1;
+    animation: cursor 1s infinite;
+}
+
+@keyframes cursor {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+/*FIM EFEITO TEXTO INTRODUÇÃO*/
+/* fim olá*/
+
+
+/*particles.js*/
+/* ---- reset ---- */
+
+
+
+canvas {
+    display: block;
+    vertical-align: bottom;
+}
+
+/* ---- particles.js container ---- */
+
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /*background-color: #b61924;*/
+    /*background-image: url("");*/
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+/* ---- stats.js ---- */
+
+.count-particles{
+    background: #000022;
+    position: absolute;
+    top: 48px;
+    left: 0;
+    width: 80px;
+    color: #13E8E9;
+    font-size: .8em;
+    text-align: left;
+    text-indent: 4px;
+    line-height: 14px;
+    padding-bottom: 2px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: bold;
+}
+
+.js-count-particles{
+    font-size: 1.1em;
+}
+
+#stats,
+.count-particles{
+    -webkit-user-select: none;
+}
+
+#stats{
+    border-radius: 3px 3px 0 0;
+    overflow: hidden;
+}
+
+.count-particles{
+    border-radius: 0 0 3px 3px;
+}
+/*Fim particles.js*/
+
+/*aparecer conforme o scroll for rolando para baixo --INICIO*/
+
+* {
+    box-sizing: border-box;
+}
+
+.item {
+    width: 200px;
+    height: 200px;
+    margin: 50px auto;
+    padding-top: 75px;
+    background: rgba(255,85,0, .7);
+    text-align: center;
+    color: #4E4C48;
+    font-size: 1.5em;
+}
+/*aparecer conforme o scroll for rolando para baixo --FIM*/
+
+
