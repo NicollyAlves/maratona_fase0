@@ -2,272 +2,14 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IV Maratona de Programação do Norte | UFAM</title>
+    <meta property="og:title" content="UFAM - Links para informações MDPN, OBI, FASEZERO" />
+    <meta property="og:url" content="https://maratona.icomp.ufam.edu.br/" />
+    <meta property="og:image" content="https://maratona.icomp.ufam.edu.br/images/arte inicial.png" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
-        :root {
-            --primary-color: #176fae;
-            --secondary-color: #ff6f30;
-            --glow-intensity: 0.6;
-        }
-
-        /* Estilos base */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            overflow: hidden;
-        }
-
-        /* Tela de acesso */
-        .access-screen {
-            position: relative;
-            height: 100vh;
-            background: #f7fff6;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            perspective: 1000px;
-        }
-
-        .access-content {
-            text-align: center;
-            z-index: 20;
-            padding: 2rem;
-            max-width: 800px;
-            animation: fadeIn 1.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;
-        }
-
-        /* Carrossel Holográfico */
-        .holographic-carousel {
-            position: relative;
-            width: 320px;
-            height: 320px;
-            margin: 0 auto 3rem;
-            perspective: 2000px;
-        }
-
-        .carousel-stage {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            transform-style: preserve-3d;
-        }
-
-        .carousel-item {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            left: 0;
-            top: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 10px;
-            overflow: hidden;
-            transition: transform 1.2s cubic-bezier(0.645, 0.045, 0.355, 1), opacity 1.2s ease;
-            transform-origin: center center;
-            backface-visibility: hidden;
-            border: 1px solid rgba(0, 240, 255, 0.4);
-        }
-
-        .carousel-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            filter: brightness(1.1) contrast(1.1);
-            background-color: var(--primary-color);
-        }
-
-        /* Navegação do Carrossel */
-        .carousel-nav {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 25px;
-            z-index: 10;
-        }
-
-        .nav-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(138, 138, 138, 0.3);
-            cursor: pointer;
-            transition: all 0.4s ease;
-            border: 1px solid rgba(26, 26, 26, 0.2);
-        }
-
-        .nav-dot.active {
-            background: var(--primary-color);
-            transform: scale(1.3);
-        }
-
-        /* Botões */
-        .access-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 1.8rem;
-            margin-top: 3.5rem;
-            position: relative;
-            z-index: 10;
-        }
-
-        .btn-neon {
-            padding: 20px 35px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            border-radius: 5px;
-            text-decoration: none;
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
-            text-align: center;
-            width: 100%;
-            max-width: 500px;
-            margin: 0 auto;
-            display: block;
-            letter-spacing: 1px;
-            backdrop-filter: blur(5px);
-        }
-        
-        .btn-neon-primary {
-            background: rgba(0, 240, 255, 0.08);
-            color: #0d68aa;
-            border: 1px solid rgba(0, 240, 255, 0.4);
-            padding-top: 10px;
-            margin-top: 40px;
-        }
-
-        .btn-neon-primary:hover {
-            background: rgba(0, 240, 255, 0.2);
-            transform: translateY(-5px);
-        }
-
-        .btn-neon-secondary {
-            background: rgba(255, 0, 240, 0.08);
-            color: var(--secondary-color);
-            border: 1px solid rgba(255, 0, 240, 0.4);
-        }
-
-        .btn-neon-secondary:hover {
-            background: rgba(255, 0, 240, 0.2);
-            transform: translateY(-5px);
-        }
-
-        /* Efeitos de fundo futuristas */
-        .hologrid {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
-            background-size: 40px 40px;
-            opacity: 0.5;
-            animation: gridMove 60s linear infinite;
-        }
-
-        .particles-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            overflow: hidden;
-        }
-
-        .particle {
-            position: absolute;
-            background: radial-gradient(circle, var(--primary-color), transparent 70%);
-            border-radius: 50%;
-            filter: blur(1px);
-            animation: floatParticle linear infinite;
-        }
-
-        .light-beam {
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 300px;
-            height: 150px;
-            background: radial-gradient(ellipse at center, 
-                      rgba(0, 240, 255, 0.3) 0%, 
-                      transparent 70%);
-            filter: blur(10px);
-            z-index: 2;
-            animation: beamPulse 6s infinite alternate;
-        }
-
-        /* Animações */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(30px) scale(0.95); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotateX(5deg) rotateY(5deg); }
-            50% { transform: translateY(-20px) rotateX(-5deg) rotateY(-5deg); }
-        }
-
-        @keyframes floatParticle {
-            0% { transform: translate(0, 110vh) scale(0.5); opacity: 0; }
-            10% { opacity: 0.8; }
-            90% { opacity: 0.8; }
-            100% { transform: translate(var(--random-x), -10vh) scale(1); opacity: 0; }
-        }
-
-        @keyframes glowPulse {
-            0% { opacity: calc(var(--glow-intensity) - 0.2); }
-            100% { opacity: calc(var(--glow-intensity) + 0.2); }
-        }
-
-        @keyframes gridMove {
-            0% { background-position: 0 0; }
-            100% { background-position: 1000px 1000px; }
-        }
-
-        @keyframes beamPulse {
-            0% { opacity: 0.3; height: 100px; }
-            100% { opacity: 0.7; height: 200px; }
-        }
-
-        /* Efeitos de hover para itens */
-        .carousel-item:hover {
-            transform: scale(1.05) !important;
-            z-index: 10;
-        }
-
-        /* Responsividade */
-        @media (max-width: 768px) {
-            .holographic-carousel {
-                width: 260px;
-                height: 260px;
-            }
-            
-            .btn-neon {
-                padding: 16px 25px;
-                font-size: 1rem;
-            }
-            
-            .access-buttons {
-                margin-top: 4.5rem;
-                gap: 1.2rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
     <!-- Tela de Acesso Inicial -->
@@ -289,21 +31,28 @@
                     <div class="carousel-item">
                         <img src="/assets/images/OITADA MARATONA DO NORTE.png" alt="Imagem 3 da Maratona">
                     </div>
+                    <div class="carousel-item">
+                        <img src="/assets/images/OBIAMN2021_logo.png" alt="Imagem 3 da Maratona">
+                    </div>
                 </div>
                 
                 <div class="carousel-nav">
                     <div class="nav-dot active" data-index="0"></div>
                     <div class="nav-dot" data-index="1"></div>
                     <div class="nav-dot" data-index="2"></div>
+                    <div class="nav-dot" data-index="3"></div>
                 </div>
             </div>
             
             <div class="access-buttons">
-                <a href="/maratona" class="btn-neon btn-neon-primary">
+                <a href="/mdpn" class="btn-neon btn-neon-primary">
                     <i class="fas fa-trophy"></i> 8ª Maratona de Programação do Norte
                 </a>
                 <a href="/fasezero" class="btn-neon btn-neon-secondary">
                     <i class="fas fa-laptop-code"></i> 4ª edição da Fase Zero
+                </a>
+                <a href="https://olimpiada.icomp.ufam.edu.br/" class="btn-neon btn-neon-primary btn-neon-obi">
+                    <i class="fas fa-trophy"></i> Olimpíada Brasileira de Informática no Amazonas e Região Norte
                 </a>
             </div>
         </div>
